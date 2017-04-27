@@ -1,0 +1,27 @@
+@import "../node_modules/normalize.css/normalize.css";
+@import "fonts/icomoon/icomoon.css";
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  font-size: inherit;
+}
+
+html {
+  height: 100%;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  font: 1rem/1.618 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+}
+
+div[class^='layout-'] {
+  height: 100%;
+}
