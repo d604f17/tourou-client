@@ -3,6 +3,7 @@ import Radium from 'radium';
 import AddressInput from 'components/AddressInput';
 import TransportTypeInput from 'components/TransportTypeInput';
 import TimesInput from 'components/TimesInput';
+import RangeInput from 'components/RangeInput';
 
 @Radium
 export default class CreatePage extends Component {
@@ -16,11 +17,15 @@ export default class CreatePage extends Component {
         start: '00:00',
         end: '00:00',
       },
+      distance: 10,
+      elevation: 5,
     };
 
     this.handleAddressChange = this.handleInputChange.bind(this, 'address');
     this.handleTransportTypeChange = this.handleInputChange.bind(this, 'transportType');
     this.handleTimesChange = this.handleInputChange.bind(this, 'times');
+    this.handleDistanceChange = this.handleInputChange.bind(this, 'distance');
+    this.handleElevationChange = this.handleInputChange.bind(this, 'elevation');
   }
 
   handleInputChange(key, value) {
@@ -28,7 +33,7 @@ export default class CreatePage extends Component {
   }
 
   render() {
-    const {address, transportType, times} = this.state;
+    const {address, transportType, times, distance, elevation} = this.state;
 
     return (
         <div style={styles.page}>
@@ -39,17 +44,29 @@ export default class CreatePage extends Component {
           </header>
 
           <main style={styles.main}>
-            <section style={[styles.input]}>
+            <section style={styles.input}>
               <TransportTypeInput value={transportType}
                                   onChange={this.handleTransportTypeChange}/>
             </section>
 
             <section>
               <div style={styles.label}>Times</div>
-              <div style={[styles.input]}>
+              <div style={styles.input}>
                 <TimesInput value={times}
-                                    onChange={this.handleTimesChange}/>
+                            onChange={this.handleTimesChange}/>
               </div>
+            </section>
+
+            <section>
+              <div style={styles.label}>Distance</div>
+              <RangeInput value={distance}
+                          onChange={this.handleDistanceChange}/>
+            </section>
+
+            <section>
+              <div style={styles.label}>Elevation</div>
+              <RangeInput value={elevation}
+                          onChange={this.handleElevationChange}/>
             </section>
           </main>
         </div>
@@ -66,6 +83,7 @@ const styles = {
     padding: '16px',
     backgroundColor: '#ffffff',
     borderRadius: '0',
+    margin: '0',
   },
   main: {
     padding: '16px',
@@ -74,6 +92,6 @@ const styles = {
     borderRadius: '3px',
     borderBottom: '1px solid #e6e6e6',
     backgroundColor: '#ffffff',
-    marginBottom: '32px',
+    margin: '0 0 32px 0',
   },
 };

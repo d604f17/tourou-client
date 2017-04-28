@@ -1,24 +1,45 @@
 import React from 'react';
-import Slider from 'react-rangeslider'
-import 'react-rangeslider/lib/index.css'
+
 class RangeInput extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onDrag = this.onDrag.bind(this);
+    this.handleStart = this.handleStart.bind(this);
+    this.handleDrag = this.handleDrag.bind(this);
+    this.handleEnd = this.handleEnd.bind(this);
   }
 
-  onDrag(event) {
-    console.log(event);
-  };
+  handleStart() {
+    document.addEventListener('mousemove', this.handleDrag);
+    document.addEventListener('mouseup', this.handleEnd);
+  }
+
+  handleDrag(event) {
+    const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+    console.log(clientX);
+  }
+
+  handleEnd() {
+    document.removeEventListener('mousemove', this.handleDrag);
+    document.removeEventListener('mouseup', this.handleEnd);
+  }
+
+  getValueFromPosition() {
+
+  }
+
+  getPositionFromValue() {
+
+  }
 
   render() {
     return (
         <div>
-          <Slider
-              value={this.props.value}
-              onChange={this.props.onChange}
-          />
+          <div onMouseDown={this.handleStart}
+               onTouchMove={this.handleDrag}
+               onTouchEnd={this.handleEnd}>
+            K
+          </div>
         </div>
     );
   }
