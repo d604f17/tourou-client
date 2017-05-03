@@ -17,8 +17,8 @@ export default class CreatePage extends Component {
         start: '00:00',
         end: '00:00',
       },
-      distance: 10,
-      elevation: 5,
+      distance: 250,
+      elevation: 25,
     };
 
     this.handleAddressChange = this.handleInputChange.bind(this, 'address');
@@ -57,15 +57,21 @@ export default class CreatePage extends Component {
               </div>
             </section>
 
-            <section>
+            <section style={styles.inputSection}>
               <div style={styles.label}>Distance</div>
               <RangeInput value={distance}
+                          min="0"
+                          max="500"
+                          format={value => value + ' km'}
                           onChange={this.handleDistanceChange}/>
             </section>
 
-            <section>
+            <section style={styles.inputSection}>
               <div style={styles.label}>Elevation</div>
               <RangeInput value={elevation}
+                          min="0"
+                          max="50"
+                          format={value => value + ' m'}
                           onChange={this.handleElevationChange}/>
             </section>
           </main>
@@ -88,10 +94,20 @@ const styles = {
   main: {
     padding: '16px',
   },
+  label: {
+    color: '#797979',
+    fontWeight: '600',
+    fontSize: '1.143em',
+    textAlign: 'center',
+    marginBottom: '4px',
+  },
   input: {
     borderRadius: '3px',
     borderBottom: '1px solid #e6e6e6',
     backgroundColor: '#ffffff',
+    margin: '0 0 32px 0',
+  },
+  inputSection: {
     margin: '0 0 32px 0',
   },
 };
