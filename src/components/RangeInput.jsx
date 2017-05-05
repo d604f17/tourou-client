@@ -2,7 +2,7 @@ import React from 'react';
 import Radium from 'radium';
 
 @Radium
-class RangeInput extends React.Component {
+export default class RangeInput extends React.Component {
   constructor(props) {
     super(props);
 
@@ -172,5 +172,3 @@ const styles = {
     right: '-27px',
   },
 };
-
-export default RangeInput;
